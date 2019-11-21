@@ -9,5 +9,5 @@ const PORT = process.env.PORT || 3000;
 app.set('port', PORT);
 
 var server = app.listen(PORT,() => {
-    console.log(`Server listening on as port: ${PORT}.`);
+    console.log(`Server listening onc as port: ${PORT}.`);
 });
