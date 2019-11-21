@@ -5,8 +5,9 @@ let app = express();
 
 app.use(express.static(path.join(__dirname, '/client')));
 
-app.set('port', process.env.PORT || 3000);
+const PORT = process.env.PORT || 3000;
+app.set('port', PORT);
 
-var server = app.listen(app.get('port'),() => {
-    console.log(`Server listening on port: ${app.get('port')}.`);
-})
+var server = app.listen(PORT,() => {
+    console.log(`Server listening on as port: ${PORT}.`);
+});
