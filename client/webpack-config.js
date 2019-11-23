@@ -7,7 +7,7 @@ module.exports = {
         path: path.resolve(__dirname, 'build'),
     },
     resolve: {
-        extensions: ['.Webpack.js', '.web.js', '.ts', '.js', '.jsx', '.tsx']
+        extensions: ['.Webpack.js', '.web.js', '.ts', '.js', '.jsx', '.tsx','.css']
     },
     module: {
         rules: [
@@ -20,6 +20,10 @@ module.exports = {
                         presets: ['@babel/preset-env','@babel/preset-react']
                     }
                 }
+            },
+            {
+                test: /\.css$/i,
+                use: ['style-loader','css-loader'],
             }
         ]
     }

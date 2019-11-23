@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata&display=swap');
+
+body {
+    font-family: 'Inconsolata', monospace;
+    background-color: #bbcdd3;
+    color: #242424;
+}
+
+#main {
+    margin-left: 3rem;
+    padding: 1rem;
+}

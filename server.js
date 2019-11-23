@@ -9,10 +9,18 @@ app.set('port', PORT);
 
 app.use(express.static(path.join(__dirname, '/client')));
 
-let database = new sqlite3.Database('./db/DATABASE.sqlite',(err) => {
+let db = new sqlite3.Database('./db/DATABASE.sqlite',(err) => {
     if (err) {
       console.error(err.message);
     }
+
+    db.run(`
+        CREATE TABLE IF NOT EXISTS Devices (
+            id INTEGER PRIMARY KEY,
+            name TEXT NOT NULL,
+            ip_address TEXT NOT NULL
+        ) WITHOUT ROWID;
+    `);
 
     
     var server = app.listen(PORT,() => {
