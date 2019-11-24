@@ -1,0 +1,11 @@
+tr th, tr td {
+    /* height: 20px; */
+    padding: 0.5em;
+    border-bottom: 1px solid #dcdcdc;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+table {
+    border-spacing: 0px;
+}

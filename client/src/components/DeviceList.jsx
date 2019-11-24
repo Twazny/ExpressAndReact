@@ -1,5 +1,7 @@
 import React,{ Component } from 'react';
 
+import './DeviceList.css'
+
 class DeviceList extends Component {
     constructor(props) {
         super(props);
@@ -26,7 +28,7 @@ class DeviceList extends Component {
                 <h3>List of devices</h3>
                 <table>
                     <tbody>
-                        <tr><th></th><th>name</th><th>ip adress</th></tr>
+                        <tr><th>no</th><th>name</th><th>ip adress</th></tr>
                         { 
                             devices.map((device,index) => 
                                 <tr><td>{index + 1}</td><td>{device.name}</td><td>{device.ip_address}</td></tr>

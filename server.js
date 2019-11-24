@@ -12,6 +12,8 @@ app.use(favicon(path.join(__dirname, '/client', 'storm.svg')));
 app.use(express.static(path.join(__dirname, '/client')));
 
 
+app.get('/*', (req,res)=>{res.redirect('/')});
+
 let db = new sqlite3.Database('./db/DATABASE.sqlite',(err) => {
     if (err) {
       console.error(err.message);
@@ -27,7 +29,7 @@ let db = new sqlite3.Database('./db/DATABASE.sqlite',(err) => {
 
     
     var server = app.listen(PORT,() => {
-        console.log(`Server listening onc as port: ${PORT}.`);
+        console.log(`Server listening on port: ${PORT}.`);
     });
 
 });
