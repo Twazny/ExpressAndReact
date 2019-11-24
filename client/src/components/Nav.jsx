@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChartBar, faProjectDiagram } from '@fortawesome/free-solid-svg-icons'
  
@@ -12,8 +12,8 @@ function Nav (props) {
     return (
         <nav className='sidenav'>
             <ul>
-                <li><Link to='/dashboard'><FontAwesomeIcon icon={faChartBar} /></Link></li>
-                <li><Link to='/orders'><FontAwesomeIcon icon={faProjectDiagram} /></Link></li>
+                <li><NavLink to='/dashboard' activeClassName='sidenav_active'><FontAwesomeIcon icon={faChartBar} /></NavLink></li>
+                <li><NavLink to='/devices' activeClassName='sidenav_active'><FontAwesomeIcon icon={faProjectDiagram} /></NavLink></li>
             </ul>
         </nav>
     );
