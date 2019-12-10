@@ -15,7 +15,6 @@ class App extends React.Component {
                 <div id='app-container'>
                     <Nav />
                     <div id="main">
-                        <h1>Data Storm</h1>
                         <Route exact path="/" component={Dashboard} />
                         <Route path="/devices" component={Devices} />
                         <Route path="/dashboard" component={Dashboard} />

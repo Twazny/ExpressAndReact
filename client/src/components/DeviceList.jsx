@@ -7,8 +7,10 @@ class DeviceList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            devices: []
+            devices: [],
+            selectedRow: null,
         }
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
@@ -19,14 +21,27 @@ class DeviceList extends Component {
         });
     }
 
+    handleClick(e) {
+        const row = e.target.closest('tr');
+        const selectedRow = this.state.selectedRow;
+        if (selectedRow !== null) {
+            selectedRow.classList.remove('rowSelected');
+        }
+        
+        this.setState({selectedRow: row});
+        row.classList.add('rowSelected');
+    }
+
     render() {
         const devices = this.state.devices;
         return (
-            <div>
+            <div className='deviceList'>
                 <h3>List of devices</h3>
                 <table>
-                    <tbody>
+                    <thead>
                         <tr><th>no</th><th>name</th><th>ip adress</th></tr>
+                    </thead>
+                    <tbody onClick={this.handleClick}>
                         { 
                             devices.map((device,index) => 
                                 <tr key={device.id}><td>{index + 1}</td><td>{device.name}</td><td>{device.ip_address}</td></tr>

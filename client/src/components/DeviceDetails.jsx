@@ -57,15 +57,17 @@ class DeviceDetails extends Component {
 
     render() {
         return (
-            <div>            
+            <div className='deviceDetails'>            
                 <h3>Device details</h3>
-                <form onSubmit={this.handleSubmit} action=''>
+                <form onSubmit={this.handleSubmit} action=''>          
                     <label htmlFor='name'>Nazwa</label><br/>
                     <input name='name' value={this.state.name} type='text' onChange={this.handleValueChange} /><br/>
                     <label>Adress IP</label><br/>
                     <input name='ip_address' value={this.state.ip_address} type='text' onChange={this.handleValueChange} /><br/>
-                    <input type='reset' value='Cancel'/>
-                    <input type='submit' value='Save' />
+                    <div className="horizontalFlex">
+                        <input type='reset' value='Cancel'/>
+                        <input type='submit' value='Save' />
+                    </div>
                 </form>
             </div>
         )

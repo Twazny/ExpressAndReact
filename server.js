@@ -8,7 +8,7 @@ const deviceRouter = require('./routes/devices');
 
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 app.set('port', PORT);
 
 app.use(favicon(path.join(__dirname, '/client', 'storm.svg')));

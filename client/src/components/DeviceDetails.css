@@ -1,21 +1,28 @@
 input[type='text'] {
     /* height: 1em; */
+    box-sizing:border-box;
     margin: 0.5em 0 0.5em 0;
     padding: 0.5em;
+    width: 100%;
 }
 
 input[type='reset'] {
     padding: 1em;
     background-color: rgba(0,0,0,0);
-    border: 1px solid navy;
-    color: navy;
-    border-radius: 3px;
+    border: 1px solid #0066B8;
+    color: #0066B8;
+    /* border-radius: 3px; */
 }
 
 input[type='submit'] {
     padding: 1em;
-    background-color: navy;
-    border: 1px solid navy;
+    background-color: #0066B8;
+    border: 1px solid #0066B8;
     color: white;
-    border-radius: 3px;
+    /* border-radius: 3px; */
+}
+
+.horizontalFlex {
+    display: flex;
+    justify-content: space-between;
 }

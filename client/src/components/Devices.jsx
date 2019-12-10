@@ -2,6 +2,8 @@ import React,{ Component } from 'react';
 import DeviceDetails from './DeviceDetails.jsx'
 import DeviceList from './DeviceList.jsx'
 
+import './Devices.css'
+
 class Devices extends Component {
     constructor (props) {
         super(props);
@@ -9,7 +11,7 @@ class Devices extends Component {
 
     render() {
         return (
-            <div>
+            <div className='devices'>
                 <DeviceList />
                 <DeviceDetails />
             </div>

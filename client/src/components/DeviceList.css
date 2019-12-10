@@ -1,11 +1,20 @@
+.deviceList {
+    width: 100%;
+}
+
 tr th, tr td {
     /* height: 20px; */
     padding: 0.5em;
-    border-bottom: 1px solid #dcdcdc;
+    border-bottom: 1px solid rgb(243, 243, 243);
     border-spacing: 0px;
     border-collapse: collapse;
 }
 
 table {
+    width:100%;
     border-spacing: 0px;
+}
+
+.rowSelected {
+    background-color: rgb(243, 243, 243);
 }

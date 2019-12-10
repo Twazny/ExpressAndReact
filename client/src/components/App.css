@@ -4,6 +4,7 @@ body {
     font-family: 'Inconsolata', monospace;
     background-color: #ffffff;
     color: #242424;
+    margin: 0;
 }
 
 #main {
