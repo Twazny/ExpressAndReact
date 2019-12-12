@@ -2,24 +2,6 @@ import React,{ Component } from 'react';
 import Devices from './Devices';
 import './DeviceDetails.css'
 
-function post(url, data) {
-    return new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                console.log(this.response);
-                
-                const posted = JSON.parse(this.response);
-                console.log(posted);
-                resolve(posted);
-            }
-        };
-    
-        xhr.open('POST',url, true);
-        xhr.setRequestHeader('content-type','application/json');
-        xhr.send(JSON.stringify(data));
-    });
-}
 
 class DeviceDetails extends Component {
     constructor(props) {
@@ -39,10 +21,7 @@ class DeviceDetails extends Component {
         try {
             const { name, ip_address} = this.state;
             if (name && ip_address) {
-                console.log({name, ip_address});
-                post('/api/devices',{name, ip_address}).then((res)=>{
-                    console.log(res);
-                })
+                this.props.onDeviceAdd({name, ip_address});
             }
         } catch(error) {
             new Error(error.message);
@@ -74,5 +53,6 @@ class DeviceDetails extends Component {
     }
 
 }
+
 
 export default DeviceDetails
