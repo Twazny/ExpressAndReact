@@ -43,10 +43,26 @@ class Devices extends Component {
     render() {
         const devices = this.state.devices;
         const selectedRow = this.state.selectedRow;
+
+        let ip_address = '';
+        let name = '';
+        if (selectedRow != null) {
+            const selectedRowData = devices.find((device) => {
+                if (device.id == selectedRow) {
+                    return device;
+                }
+            });
+            console.log(selectedRowData);
+            name = selectedRowData.name;
+            ip_address = selectedRowData.ip_address;
+        }
+
+        console.log(`name: ${name}, ip_address: ${ip_address}`);
+
         return (
             <div className='devices'>
                 <DeviceList devices = {devices} selectedRow = {selectedRow} onRowSelect = {this.handleRowSelect}/>
-                <DeviceDetails onDeviceAdd = {this.handleDeviceAdd}/>
+                <DeviceDetails key = {selectedRow} onDeviceAdd = {this.handleDeviceAdd} id = {selectedRow} name = {name} ip_address = {ip_address}/>
             </div>
         )
     }

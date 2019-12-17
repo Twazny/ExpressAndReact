@@ -6,11 +6,12 @@ import './DeviceDetails.css'
 class DeviceDetails extends Component {
     constructor(props) {
         super(props);
+        console.log(`props: ${props}`);
         this.state = {
-            id: null,
-            name: '',
-            ip_address: '',
-            editable: 0
+            id: this.props.id,
+            name: this.props.name,
+            ip_address: this.props.ip_address,
+            editable: false
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleValueChange = this.handleValueChange.bind(this);
@@ -23,6 +24,7 @@ class DeviceDetails extends Component {
             if (name && ip_address) {
                 this.props.onDeviceAdd({name, ip_address});
             }
+            
         } catch(error) {
             new Error(error.message);
         }
@@ -40,13 +42,27 @@ class DeviceDetails extends Component {
                 <h3>Device details</h3>
                 <form onSubmit={this.handleSubmit} action=''>          
                     <label htmlFor='name'>Nazwa</label><br/>
-                    <input name='name' value={this.state.name} type='text' onChange={this.handleValueChange} /><br/>
+                    {
+                        this.state.editable ?
+                        <input name='name' value={this.state.name} type='text' onChange={this.handleValueChange}/> : 
+                        <input style={{border:'none'}} name='name' value={this.state.name} type='text' onChange={this.handleValueChange} readOnly/>
+                    }
+                    <br/>
                     <label>Adress IP</label><br/>
-                    <input name='ip_address' value={this.state.ip_address} type='text' onChange={this.handleValueChange} /><br/>
-                    <div className="horizontalFlex">
-                        <input type='reset' value='Cancel'/>
-                        <input type='submit' value='Save' />
-                    </div>
+                    {
+                        this.state.editable ?
+                        <input name='ip_address' value={this.state.ip_address} type='text' onChange={this.handleValueChange}/> : 
+                        <input style={{border:'none'}} name='ip_address' value={this.state.ip_address} type='text' onChange={this.handleValueChange} readOnly/>
+                    }
+                    <br/>
+                    { 
+                        this.state.editable ?
+                        <div className="horizontalFlex">
+                            <input type='reset' value='Cancel'/>
+                            <input type='submit' value='Save' />
+                        </div> :
+                        <button>Edit</button>
+                    }
                 </form>
             </div>
         )

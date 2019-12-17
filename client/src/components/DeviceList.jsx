@@ -19,7 +19,6 @@ class DeviceList extends Component {
 
     render() {
         const { devices, selectedRow } = this.props;
-        console.log(this.props);
         return (
             <div className='deviceList'>
                 <h3>List of devices</h3>
@@ -32,7 +31,6 @@ class DeviceList extends Component {
                             devices.map((device,index) => {
                                 let id = device.id;
                                 let className = id == selectedRow ? 'rowSelected' : '';
-                                console.log(`${id} ${selectedRow} ${className}`);
                                 return (
                                     <tr key={id} data-id={id} className={className}>
                                         <td>{index + 1}</td>
