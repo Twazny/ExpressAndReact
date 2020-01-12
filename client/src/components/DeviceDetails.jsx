@@ -1,5 +1,6 @@
 import React,{ Component } from 'react';
-import Devices from './Devices';
+import Button from './Button';
+import Panel from './Panel';
 import './DeviceDetails.css'
 
 
@@ -15,6 +16,8 @@ class DeviceDetails extends Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleValueChange = this.handleValueChange.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
+        this.handleCancel = this.handleCancel.bind(this);
     }
 
     handleSubmit(e) {
@@ -36,34 +39,44 @@ class DeviceDetails extends Component {
         this.setState({[name]: value});
     }
 
+    handleEdit(e) {
+        this.setState({editable: true});
+    }
+
+    handleCancel(e) {
+        this.setState({editable: false});
+    }
+
     render() {
         return (
-            <div className='deviceDetails'>            
+            <div className='deviceDetails'>
+                <Panel>            
                 <h3>Device details</h3>
-                <form onSubmit={this.handleSubmit} action=''>          
+                <form id='detailsForm' onSubmit={this.handleSubmit} action=''>          
                     <label htmlFor='name'>Nazwa</label><br/>
                     {
                         this.state.editable ?
                         <input name='name' value={this.state.name} type='text' onChange={this.handleValueChange}/> : 
-                        <input style={{border:'none'}} name='name' value={this.state.name} type='text' onChange={this.handleValueChange} readOnly/>
+                        <input style={{border:'2px solid rgba(0,0,0,0)'}} name='name' value={this.state.name} type='text' onChange={this.handleValueChange} readOnly/>
                     }
                     <br/>
                     <label>Adress IP</label><br/>
                     {
                         this.state.editable ?
                         <input name='ip_address' value={this.state.ip_address} type='text' onChange={this.handleValueChange}/> : 
-                        <input style={{border:'none'}} name='ip_address' value={this.state.ip_address} type='text' onChange={this.handleValueChange} readOnly/>
+                        <input style={{border:'2px solid rgba(0,0,0,0)'}} name='ip_address' value={this.state.ip_address} type='text' onChange={this.handleValueChange} readOnly/>
                     }
                     <br/>
                     { 
                         this.state.editable ?
                         <div className="horizontalFlex">
-                            <input type='reset' value='Cancel'/>
-                            <input type='submit' value='Save' />
+                            <Button text='Cancel' handleClick={this.handleCancel}></Button>
+                            <Button text='Save' handleClick={this.handleSubmit}></Button>
                         </div> :
-                        <button>Edit</button>
+                        <Button text='Edit' handleClick={this.handleEdit}></Button>
                     }
                 </form>
+                </Panel>
             </div>
         )
     }

@@ -1,6 +1,7 @@
 import React,{ Component } from 'react';
 import DeviceDetails from './DeviceDetails.jsx'
 import DeviceList from './DeviceList.jsx'
+import Panel from './Panel.jsx'
 
 import './Devices.css'
 
@@ -29,15 +30,13 @@ class Devices extends Component {
     }
 
     handleDeviceAdd(data) {
-        try {
-            post('/api/devices',data).then((res) => {
-                let devices = this.state.devices;
-                devices = [...devices, res];
-                this.setState({devices: devices});
-            });
-        } catch(error) {
+        post('/api/devices',data).then((res) => {
+            let devices = this.state.devices;
+            devices = [...devices, res];
+            this.setState({devices: devices});
+        }).catch(error => {
             throw Error(error.message);
-        }
+        });
     }
 
     render() {
@@ -62,7 +61,7 @@ class Devices extends Component {
         return (
             <div className='devices'>
                 <DeviceList devices = {devices} selectedRow = {selectedRow} onRowSelect = {this.handleRowSelect}/>
-                <DeviceDetails key = {selectedRow} onDeviceAdd = {this.handleDeviceAdd} id = {selectedRow} name = {name} ip_address = {ip_address}/>
+                <DeviceDetails key = {selectedRow} onDeviceAdd = {this.handleDeviceAdd} id = {selectedRow} name = {name} ip_address = {ip_address}/>                
             </div>
         )
     }

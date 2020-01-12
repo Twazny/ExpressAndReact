@@ -6,27 +6,6 @@ input[type='text'] {
     width: 100%;
 }
 
-input[type='reset'] {
-    padding: 1em;
-    background-color: rgba(0,0,0,0);
-    border: 1px solid #0066B8;
-    color: #0066B8;
-    /* border-radius: 3px; */
-}
-
-input[type='submit'] {
-    padding: 1em;
-    background-color: #0066B8;
-    border: 1px solid #0066B8;
-    color: white;
-    /* border-radius: 3px; */
-}
-
-input[type='submit']:hover {
-    cursor: pointer;
-    background-color: rgb(0, 88, 160);
-}
-
 .horizontalFlex {
     display: flex;
     justify-content: space-between;

@@ -1,4 +1,5 @@
 import React,{ Component } from 'react';
+import Panel from './Panel.jsx';
 
 import './DeviceList.css'
 
@@ -21,6 +22,7 @@ class DeviceList extends Component {
         const { devices, selectedRow } = this.props;
         return (
             <div className='deviceList'>
+                <Panel>
                 <h3>List of devices</h3>
                 <table>
                     <thead>
@@ -42,6 +44,7 @@ class DeviceList extends Component {
                         }
                     </tbody>
                 </table>
+                </Panel>
             </div>
         )
     }

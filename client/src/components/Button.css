@@ -1,0 +1,31 @@
+
+.btn {
+    padding: 1em;
+    border: 1px solid #0066B8;
+    text-align: center;
+}
+
+.btn.solid {
+    background-color: #0066B8;
+    color: white;
+}
+
+.btn.outline {
+    background-color: rgba(0,0,0,0);
+    color: #0066B8;
+}
+
+
+.btn:hover.solid {
+    cursor: pointer;
+    background-color: rgb(0, 88, 160);
+}
+
+.horizontalFlex .btn {
+    flex-grow: 1;
+}
+
+.horizontalFlex .btn:not(:last-child) {
+    flex-grow: 1;
+    margin-right: 1em;
+}

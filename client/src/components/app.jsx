@@ -15,7 +15,7 @@ class App extends React.Component {
                 <div id='app-container'>
                     <Nav />
                     <div id="main">
-                        <Route exact path="/" component={Dashboard} />
+                        <Route exact path="/" component={Devices} />
                         <Route path="/devices" component={Devices} />
                         <Route path="/dashboard" component={Dashboard} />
                     </div>
