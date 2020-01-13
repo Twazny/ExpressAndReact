@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect} from 'react-router-dom';
 
 import './App.css'
 
@@ -15,7 +15,7 @@ class App extends React.Component {
                 <div id='app-container'>
                     <Nav />
                     <div id="main">
-                        <Route exact path="/" component={Devices} />
+                        <Route exact path="/"><Redirect to="/devices"/></Route>
                         <Route path="/devices" component={Devices} />
                         <Route path="/dashboard" component={Dashboard} />
                     </div>

@@ -28,6 +28,16 @@ module.exports = {
             }
             res.json(rows);
         });
+    },
+    update: function(req,res) {
+        console.log(req.body);
+
+
+
+        const sql = `
+        
+        `
+        res.json({});
     }
 };
 

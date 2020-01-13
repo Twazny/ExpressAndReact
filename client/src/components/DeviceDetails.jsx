@@ -25,7 +25,7 @@ class DeviceDetails extends Component {
         try {
             const { name, ip_address} = this.state;
             if (name && ip_address) {
-                this.props.onDeviceAdd({name, ip_address});
+                this.props.onSave({name, ip_address});
             }
             
         } catch(error) {
