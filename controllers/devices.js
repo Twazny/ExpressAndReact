@@ -31,12 +31,17 @@ module.exports = {
     },
     update: function(req,res) {
         console.log(req.body);
+        const id = req.params.id;
 
-
-
-        const sql = `
-        
+        let sql = `
+        UPDATE Devices SET
         `
+        Object.keys(req.body).forEach((key) => {
+            sql = sql.concat(` ${key} = ?,`);
+        });
+        sql = sql.concat(`WHERE id = ${id}`);
+
+        console.log(sql);
         res.json({});
     }
 };
