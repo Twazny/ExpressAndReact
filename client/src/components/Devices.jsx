@@ -34,7 +34,17 @@ class Devices extends Component {
         let selectedRow = this.state.selectedRow;
         if (selectedRow !== null) {
             patch(`/api/devices/${selectedRow}`,data).then(res => {
+                console.log('RES');
                 console.log(res);
+                let devices = this.state.devices;
+                let idx = devices.indexOf((element) => {
+                    console.log('selectedRow');
+                    console.log(selectedRow);
+                    element.id = selectedRow;
+                });
+                console.log(idx);
+                devices[idx] = res;
+                this.setState({devices: devices});
             }).catch(error => {
                 throw Error(error.message);
             })

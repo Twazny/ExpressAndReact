@@ -9,7 +9,7 @@ module.exports = {
         `
         db.run(sql, [name, ip_address], function(err) {
             if (err) {
-                return console.log(err.message);
+                console.log(err.message);
                 res.end(err.message);
             }
             res.json({id: this.lastID, name, ip_address});
@@ -23,7 +23,7 @@ module.exports = {
         `
         db.all(sql, [], (err, rows) => {
             if (err) {
-                return console.log(err.message);
+                console.log(err.message);
                 res.end(err.message);
             }
             res.json(rows);
@@ -31,18 +31,26 @@ module.exports = {
     },
     update: function(req,res) {
         console.log(req.body);
-        const id = req.params.id;
+        const id = parseInt(req.params.id);
 
         let sql = `
         UPDATE Devices SET
         `
+        let updateColums = [];
+        let queryValues = Object.keys(req.body).push(id);
         Object.keys(req.body).forEach((key) => {
-            sql = sql.concat(` ${key} = ?,`);
+            updateColums.push(`${key} = ?`);
         });
-        sql = sql.concat(`WHERE id = ${id}`);
+        sql = sql.concat(updateColums.join(', '), ` WHERE id = ?`);
 
         console.log(sql);
-        res.json({});
+        db.run(sql, queryValues, function(err) {
+            if (err) {
+                console.log(err.message);
+                res.end(err.message);
+            }
+            res.json({id, ...req.body});
+        });
     }
 };
 
