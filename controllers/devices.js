@@ -31,13 +31,13 @@ module.exports = {
     },
     update: function(req,res) {
         console.log(req.body);
+        // const id = req.params.id;
         const id = parseInt(req.params.id);
-
         let sql = `
         UPDATE Devices SET
         `
         let updateColums = [];
-        let queryValues = Object.keys(req.body).push(id);
+        let queryValues = Object.values(req.body).push(id);
         Object.keys(req.body).forEach((key) => {
             updateColums.push(`${key} = ?`);
         });

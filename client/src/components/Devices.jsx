@@ -25,7 +25,6 @@ class Devices extends Component {
     }
 
     handleRowSelect(row) {
-        console.log(row);
         this.setState({selectedRow: row});
     }
 
@@ -34,15 +33,10 @@ class Devices extends Component {
         let selectedRow = this.state.selectedRow;
         if (selectedRow !== null) {
             patch(`/api/devices/${selectedRow}`,data).then(res => {
-                console.log('RES');
-                console.log(res);
                 let devices = this.state.devices;
-                let idx = devices.indexOf((element) => {
-                    console.log('selectedRow');
-                    console.log(selectedRow);
-                    element.id = selectedRow;
+                let idx = devices.findIndex((element) => {
+                    return element.id == selectedRow;
                 });
-                console.log(idx);
                 devices[idx] = res;
                 this.setState({devices: devices});
             }).catch(error => {
@@ -71,12 +65,9 @@ class Devices extends Component {
                     return device;
                 }
             });
-            console.log(selectedRowData);
             name = selectedRowData.name;
             ip_address = selectedRowData.ip_address;
         }
-
-        console.log(`name: ${name}, ip_address: ${ip_address}`);
 
         return (
             <div className='devices'>
@@ -101,10 +92,7 @@ function xhr(method, url, data) {
         const xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                console.log(this.response);
-                
                 const res = JSON.parse(this.response);
-                console.log(res);
                 resolve(res);
             }
         };

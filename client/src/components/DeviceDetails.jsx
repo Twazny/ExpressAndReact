@@ -7,7 +7,6 @@ import './DeviceDetails.css'
 class DeviceDetails extends Component {
     constructor(props) {
         super(props);
-        console.log(`props: ${props}`);
         this.state = {
             id: this.props.id,
             name: this.props.name,
